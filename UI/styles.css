@@ -36,11 +36,11 @@ body {
   background: #fff;
   padding: 2rem;
   width: 600px;
+  height: 80vh;
+  max-height: 80vh;
   flex-shrink: 0;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   border-radius: 12px;
-  height: fit-content;
-  max-height: 80vh;
 }
 
 .preview-container.visible {
@@ -61,6 +61,7 @@ body {
   align-items: center;
   justify-content: center;
   position: relative;
+  min-height: 300px;
 }
 
 .no-preview {

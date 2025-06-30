@@ -8,7 +8,6 @@ const formatMap = {
   jpg: ["png", "jpeg"],
   jpeg: ["png", "jpg"],
   png: ["jpg", "jpeg"],
-  mp3: ["mp4"],
   mp4: ["mp3"],
 };
 
@@ -23,6 +22,7 @@ const previewContent = document.getElementById("previewContent");
 const noPreviewText = previewContent.querySelector(".no-preview");
 const previewContainer = document.querySelector(".preview-container");
 const appContainer = document.querySelector(".app-container");
+const baseUrl = 'http://localhost:9000';
 
 function formatJSON(jsonString) {
   try {
@@ -177,6 +177,9 @@ fileInput.addEventListener("change", () => {
   const file = fileInput.files[0];
   if (!file) {
     hidePreview();
+    outputFormat.innerHTML = `<option value="">Select output format</option>`;
+    outputFormat.disabled = true;
+    convertBtn.disabled = true;
     return;
   }
 
@@ -204,4 +207,53 @@ fileInput.addEventListener("change", () => {
 
 outputFormat.addEventListener("change", () => {
   convertBtn.disabled = outputFormat.value === "";
+});
+
+document.getElementById('convertBtn').addEventListener('click', async function (e) {
+  e.preventDefault();
+
+  const file = fileInput.files[0];
+  if (!file) {
+    alert('Please select a file.');
+    return;
+  }
+  const fileFormat = file.name.split('.').pop().toLowerCase();
+  const conversionFormat = outputFormat.value;
+
+  if (!conversionFormat) {
+    alert('Please select a conversion format.');
+    return;
+  }
+
+  let endpoint = '';
+  const formData = new FormData();
+
+  // Handle image conversions with /images/convert endpoint
+  if (["jpg", "jpeg", "png"].includes(fileFormat)) {
+    endpoint = `${baseUrl}/images/convert`;
+    formData.append('file', file);
+    formData.append('targetFormat', conversionFormat);
+  } else {
+    endpoint = `${baseUrl}/${fileFormat}-to-${conversionFormat}`;
+    formData.append('file', file);
+  }
+
+  try {
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      body: formData
+    });
+    if (!response.ok) throw new Error('Conversion failed');
+    const blob = await response.blob();
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `converted.${conversionFormat}`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    window.URL.revokeObjectURL(url);
+  } catch (err) {
+    console.log('Error: ' + err.message);
+  }
 }); 
