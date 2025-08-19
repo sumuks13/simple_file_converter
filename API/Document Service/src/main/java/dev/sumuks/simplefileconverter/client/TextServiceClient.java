@@ -5,7 +5,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient("text-service")
+@FeignClient(value = "text-service", url = "${text-service.url}")
 public interface TextServiceClient {
 
     @PostMapping("/url-to-html")
