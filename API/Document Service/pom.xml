@@ -33,6 +33,11 @@
 
 	<repositories>
 		<repository>
+			<id>central</id>
+			<name>Maven Central</name>
+			<url>https://repo.maven.apache.org/maven2</url>
+		</repository>
+		<repository>
 			<id>com.e-iceblue</id>
 			<name>e-iceblue</name>
 			<url>https://repo.e-iceblue.com/nexus/content/groups/public/</url>
@@ -93,6 +98,11 @@
 		<dependency>
 			<groupId>org.docx4j</groupId>
 			<artifactId>docx4j-export-fo</artifactId>
+			<version>11.5.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.docx4j</groupId>
+			<artifactId>docx4j-JAXB-ReferenceImpl</artifactId>
 			<version>11.5.3</version>
 		</dependency>
 		<dependency>
