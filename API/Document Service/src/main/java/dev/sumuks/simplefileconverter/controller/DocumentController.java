@@ -44,8 +44,8 @@ public class DocumentController {
         InputStream inputStream = file.getInputStream();
         doc.loadFromStream(inputStream);
 
-        response.setContentType(MediaType.APPLICATION_OCTET_STREAM_VALUE);
-        response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=converted.docx");
+        response.setContentType("application/vnd.openxmlformats-officedocument.wordprocessingml.document");
+        response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"converted.docx\"");
         doc.saveToStream(response.getOutputStream(), FileFormat.DOCX);
 
         doc.close();
@@ -63,7 +63,7 @@ public class DocumentController {
         FOSettings foSettings = Docx4J.createFOSettings();
         foSettings.setOpcPackage(wordMLPackage);
 
-        response.setContentType(MediaType.APPLICATION_OCTET_STREAM_VALUE);
+        response.setContentType(MediaType.APPLICATION_PDF_VALUE);
         response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=converted.pdf");
         Docx4J.toFO(foSettings, response.getOutputStream(), Docx4J.FLAG_EXPORT_PREFER_XSL);
     }
