@@ -179,10 +179,9 @@ input[type="file"]::-webkit-file-upload-button:hover {
   margin-bottom: 1.2rem;
 }
 
-/* Responsive for small screens */
-@media (max-width: 600px) {
-  .supported-conversions-tooltip .tooltip-content {
-    padding: 1.2rem 0.5rem;
-    min-width: 0;
-  }
+.tooltip-close{
+  position: absolute; 
+  top: 16px; 
+  right: 18px; 
+  cursor: pointer;
 }
