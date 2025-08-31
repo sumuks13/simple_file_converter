@@ -35,8 +35,7 @@ body {
 }
 
 h2 {
-  color: #ffffff;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0;
   font-weight: 600;
   font-size: 1.5rem;
 }
@@ -44,7 +43,6 @@ h2 {
 label {
   display: block;
   margin-bottom: 0.75rem;
-  color: rgba(255, 255, 255, 0.9);
   font-weight: 500;
 }
 
@@ -110,9 +108,81 @@ input[type="file"]::-webkit-file-upload-button {
   border-radius: 6px;
   cursor: pointer;
   margin-right: 1rem;
-  transition: background 0.3s ease;
 }
 
 input[type="file"]::-webkit-file-upload-button:hover {
   background: rgba(255, 255, 255, 0.2);
+}
+
+.supported-conversions-tooltip {
+  position: fixed;
+  top: 0;
+  height: 95vh;
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-svg {
+  stroke: #fff;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  display: block;
+}
+
+.supported-conversions-tooltip th, .supported-conversions-tooltip td {
+  padding: 4px 12px;
+  text-align: left;
+}
+
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.info-icon {
+  margin-left: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+}
+.info-icon:hover {
+  background: rgba(144,202,249,0.10);
+}
+
+.info-icon .info-svg {
+  stroke: #fff;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  display: block;
+}
+
+.supported-conversions-tooltip .tooltip-content {
+  background: rgba(30, 30, 50, 0.98);
+  border-radius: 16px;
+  padding: 2.2rem 2.5rem 2rem 2.5rem;
+  min-width: 350px;
+  max-width: 95vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.supported-conversions-tooltip h2 {
+  margin-bottom: 1.2rem;
+}
+
+/* Responsive for small screens */
+@media (max-width: 600px) {
+  .supported-conversions-tooltip .tooltip-content {
+    padding: 1.2rem 0.5rem;
+    min-width: 0;
+  }
 }

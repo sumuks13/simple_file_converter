@@ -3,12 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <title>Simple File Converter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
   <div class="app-container">
     <div class="container">
-      <h2>Convert Your File</h2>
+
+      <div class="header-row">
+        <h2>Convert Your File</h2>
+        <span class="info-icon">
+          <svg class="info-svg" width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="16" x2="12" y2="12"/>
+            <line x1="12" y1="8" x2="12" y2="8"/>
+          </svg>
+        </span>
+      </div>
 
       <!-- Simple input type selector -->
       <label for="inputType">Input Type:</label>
@@ -19,7 +31,7 @@
       
       <!-- File input section -->
       <div id="fileInputSection" class="input-section">
-        <input type="file" id="fileInput">
+        <input type="file" id="fileInput" accept=".pdf,.docx,.json,.csv,.xml,.html,.jpg,.jpeg,.png">
       </div>
       
       <!-- URL input section -->
@@ -34,7 +46,86 @@
       <button id="convertBtn" disabled>Convert</button>
     </div>
 
+  <div class="supported-conversions-tooltip">
+      <div class="tooltip-content">
+        <h2>Supported File Conversions</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Input Format</th>
+              <th>Output Formats</th>
+              <th>Coverage</th>
+              <th>Limitations</th>
+            </tr>
+          </thead>
+          <tbody>
+              <td>JSON</td>
+              <td>CSV, XML</td>
+              <td>Full</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>CSV</td>
+              <td>JSON, XML</td>
+              <td>Full</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>XML</td>
+              <td>JSON, CSV</td>
+              <td>Moderate</td>
+              <td>Complex attributes may be simplified</td>
+            </tr>
+            <tr>
+              <td>HTML</td>
+              <td>PDF, DOCX</td>
+              <td>Moderate</td>
+              <td>Dynamic content not supported</td>
+            </tr>
+            <tr>
+              <td>JPG</td>
+              <td>PNG, JPEG</td>
+              <td>Full</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>JPEG</td>
+              <td>PNG, JPG</td>
+              <td>Full</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>PNG</td>
+              <td>JPG, JPEG</td>
+              <td>Full</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>PDF</td>
+              <td>DOCX</td>
+              <td>Limited</td>
+              <td>Only first 3 pages are converted. Limited font support</td>
+            </tr>
+            <tr>
+              <td>DOCX</td>
+              <td>PDF</td>
+              <td>Limited</td>
+              <td>Limited font support</td>
+            </tr>
+            <tr>
+            <tr>
+              <td>URL</td>
+              <td>HTML, PDF, QR Code</td>
+              <td>Moderate</td>
+              <td>Depends on website accessibility and content</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
   <script src="api-handler.js"></script>
   <script src="input-handler.js"></script>
+  
 </body>
 </html>
