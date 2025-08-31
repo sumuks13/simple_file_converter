@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple File Converter</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <div class="container">
+      <h2>Convert Your File</h2>
+
+      <!-- Simple input type selector -->
+      <label for="inputType">Input Type:</label>
+      <select id="inputType">
+        <option value="file">File Upload</option>
+        <option value="url">URL Link</option>
+      </select>
+      
+      <!-- File input section -->
+      <div id="fileInputSection" class="input-section">
+        <input type="file" id="fileInput">
+      </div>
+      
+      <!-- URL input section -->
+      <div id="urlInputSection" class="input-section" style="display: none;">
+        <input type="url" id="urlInput" placeholder="Enter URL">
+      </div>
+      
+      <label for="outputFormat">Output Type:</label>
+      <select id="outputFormat">
+        <option value="">Select output format</option>
+      </select>
+      <button id="convertBtn" disabled>Convert</button>
+    </div>
+
+  <script src="api-handler.js"></script>
+  <script src="input-handler.js"></script>
+</body>
+</html>
