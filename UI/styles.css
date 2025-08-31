@@ -117,6 +117,8 @@ input[type="file"]::-webkit-file-upload-button:hover {
 .supported-conversions-tooltip {
   position: fixed;
   top: 0;
+  left: 0;
+  width: 100vw;
   height: 95vh;
   z-index: 1000;
   display: none;
@@ -173,6 +175,16 @@ input[type="file"]::-webkit-file-upload-button:hover {
   max-height: 90vh;
   overflow-y: auto;
   position: relative;
+}
+
+@media (max-width: 600px) {
+  .supported-conversions-tooltip .tooltip-content {
+    min-width: unset;
+    width: 90vw;
+    max-width: 98vw;
+    padding: 1.2rem 0.7rem 1rem 0.7rem;
+    border-radius: 10px;
+  }
 }
 
 .supported-conversions-tooltip h2 {
