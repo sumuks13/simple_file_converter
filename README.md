@@ -1,6 +1,10 @@
 # simple-file-converter
 A microservices-based java spring boot application for converting files to different formats.
 
+## AWS Serverless Backend Architecture
+
+<img width="874" height="551" alt="image" src="https://github.com/user-attachments/assets/9803bf12-54ec-4d7b-9165-034e2f6d8c37" />
+
 ## Supported File Conversions
 
 | Input Format | Output Formats         | Coverage  | Limitations                                              |
